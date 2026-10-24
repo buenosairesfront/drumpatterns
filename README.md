@@ -53,12 +53,17 @@ y entrá a http://localhost:8770.
 | `app.js` | biblioteca, grilla, secuenciador, guardado y exportación |
 | `audio.js` | kits de batería sintetizados |
 | `midi.js` | escritura de archivos MIDI |
-| `patterns.js` | patterns transcriptos del libro |
+| `patterns.js` | ritmos de estilos clásicos (colección U-MA, ver Fuentes) |
 | `extra-patterns.js` | estilos U-MA (Jungle, DnB, Urbano, Reggaeton, Hip Hop, Techno, House, Experimental, Classics, Cumbia) |
 | `i18n.js` | textos en 6 idiomas |
 
-## Fuentes
+## Fuentes y licencia
 
-*260 Drum Machine Patterns*, René-Pierre Bardet (Hal Leonard) · internet.
+Ritmos de estilos clásicos de caja de ritmos, con nombres, selección y orden propios.
+Referencia de estudio: R.-P. Bardet, *260 Drum Machine Patterns* (Hal Leonard) · internet.
+Sin afiliación con el autor ni la editorial. Partitura de cumbia: Prof. Daniel Vargas (dominio público).
+
+Copyleft: código GPL-3.0 · diseño y grooves U-MA CC BY-SA 4.0. No cubre la marca U-MA ni material de terceros.
+Detalle en [LICENSE](LICENSE).
 
 🄯 Buenos Aires Front · U-MA

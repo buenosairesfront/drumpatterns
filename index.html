@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Silkscreen&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=8">
+<link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 <main>
@@ -33,7 +33,7 @@
       <div class="device-top">
         <img class="logo" src="logo.svg" alt="U-MA サウンド">
         <div class="meta">
-          <a href="#langs" id="langLink" class="lang-link">LANG</a>
+          <a href="#langs" id="langLink" class="lang-link" aria-label="Language / Idioma">🌐 LANG</a>
           <div class="app-name">Drum Patterns</div>
           <span id="metaStyle">—</span> · <span id="metaInfo">16 pasos</span>
         </div>
@@ -108,7 +108,11 @@
 
   <footer>
     <span><span class="copyleft" aria-label="Copyleft">©</span> Buenos Aires Front · U-MA</span>
-    <span class="sources"><span data-i18n="sources">Fuentes</span>: <i>260 Drum Machine Patterns</i>, René-Pierre Bardet (Hal Leonard) · <span data-i18n="internet">internet</span></span>
+    <span class="sources">
+      <span data-i18n-html="reference">Ritmos de estilos clásicos de caja de ritmos. Referencia de estudio: R.-P. Bardet, <i>260 Drum Machine Patterns</i> (Hal Leonard) · internet. Sin afiliación con el autor ni la editorial.</span><br>
+      <span data-i18n="credits">Partitura de cumbia: Prof. Daniel Vargas (dominio público).</span><br>
+      <a class="lic" href="https://github.com/buenosairesfront/drumpatterns/blob/main/LICENSE" target="_blank" rel="noopener" data-i18n="license">Copyleft: código GPL-3.0 · diseño y grooves U-MA CC BY-SA 4.0. No cubre material de terceros.</a>
+    </span>
   </footer>
   <div id="langs" class="langs" hidden>
     <span class="langs-label" data-i18n="language">Idioma</span>
@@ -116,11 +120,11 @@
   </div>
 </main>
 
-<script src="patterns.js?v=8"></script>
-<script src="extra-patterns.js?v=8"></script>
-<script src="i18n.js?v=8"></script>
-<script src="midi.js?v=8"></script>
-<script src="audio.js?v=8"></script>
-<script src="app.js?v=8"></script>
+<script src="patterns.js?v=9"></script>
+<script src="extra-patterns.js?v=9"></script>
+<script src="i18n.js?v=9"></script>
+<script src="midi.js?v=9"></script>
+<script src="audio.js?v=9"></script>
+<script src="app.js?v=9"></script>
 </body>
 </html>

@@ -3,10 +3,6 @@
 // Cada groove combina una "base" (bombo/caja + acentos) con una "capa" (hats, ride, percusión).
 // Filas: '.' vacío, 'x' nota, '2'..'4' ratchet. 16 pasos de semicorchea.
 (() => {
-  // estilos del libro que no se usan
-  const REMOVE = new Set(['Paso Doble', 'Charleston', 'March', 'Boogie']);
-  for (let i = BOOK_PATTERNS.length - 1; i >= 0; i--) if (REMOVE.has(BOOK_PATTERNS[i].style)) BOOK_PATTERNS.splice(i, 1);
-
   const EXTRA = {
     Jungle: { bpm: 168,
       bases: [

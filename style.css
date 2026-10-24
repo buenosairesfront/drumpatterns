@@ -188,8 +188,12 @@ input:focus-visible, select:focus-visible, button:focus-visible { outline: 3px s
 .empty { color: var(--ink-soft); font-size: 13px; }
 
 .copyleft { display: inline-block; transform: scaleX(-1); font-size: 22px; line-height: 1; vertical-align: -4px; margin-right: 2px; }
-.lang-link { display: inline-block; font-size: 8px; font-weight: 700; letter-spacing: .2em; color: var(--ink-soft); text-decoration: none; margin-bottom: 4px; }
-.lang-link:hover { color: var(--mag); }
+.lang-link {
+  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .16em; color: var(--ink); text-decoration: none;
+  border: 2px solid var(--ink); border-radius: 999px; padding: 2px 8px; margin-bottom: 6px; background: var(--yel);
+  box-shadow: -2px 2px 0 var(--ink);
+}
+.lang-link:hover { background: var(--mag); color: var(--white); }
 .langs { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 14px; }
 .langs[hidden] { display: none; }
 .langs-label { font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-right: 4px; }
@@ -201,7 +205,8 @@ input:focus-visible, select:focus-visible, button:focus-visible { outline: 3px s
 .langs button.on { background: var(--mag); border-color: var(--mag); color: var(--white); }
 .langs.flash { animation: flash 1s ease 2; }
 @keyframes flash { 50% { background: var(--yel); } }
-.sources { text-align: right; font-weight: 400; }
+.sources { text-align: right; font-weight: 400; line-height: 1.5; max-width: 560px; }
+.sources .lic { color: inherit; }
 footer { flex-wrap: wrap; }
 footer { margin-top: 40px; padding-top: 10px; border-top: var(--bw) solid var(--ink); font-size: 11px; font-weight: 600; display: flex; justify-content: space-between; gap: 12px; letter-spacing: .06em; }
 

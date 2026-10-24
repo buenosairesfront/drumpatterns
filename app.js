@@ -45,6 +45,8 @@ function lastOf(p) { return Math.min(p.last || p.steps, p.steps); }
 const nudgeKey = (inst, s) => `${inst}:${s}`;
 
 // ---------- biblioteca ----------
+const isFill = p => p.kind === 'fill' || /^(Break|Ending)/.test(p.name);
+
 function groupByStyle(list) {
   const byStyle = new Map();
   for (const p of list) {
@@ -91,8 +93,8 @@ function renderLibrary() {
     title.textContent = q ? `${t('searchTitle')}: ${q}` : state.openStyle === SAVED ? t('saved') : state.openStyle;
     list.append(close, title);
     if (!shown.length) list.insertAdjacentHTML('beforeend', `<p class="empty">${state.openStyle === SAVED && !q ? t('noSaved') : t('noResults')}</p>`);
-    const groups = q ? groupByStyle(shown) : state.openStyle === SAVED ? new Map([[t('savedGroup'), shown]]) : new Map([[t('grooves'), shown.filter(p => !/^(Break|Ending)/.test(p.name))],
-      [t('breaks'), shown.filter(p => /^(Break|Ending)/.test(p.name))]]);
+    const groups = q ? groupByStyle(shown) : state.openStyle === SAVED ? new Map([[t('savedGroup'), shown]]) : new Map([[t('grooves'), shown.filter(p => !isFill(p))],
+      [t('breaks'), shown.filter(isFill)]]);
     for (const [title, pats] of groups) {
       if (!pats.length) continue;
       const h = document.createElement('h3');
