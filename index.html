@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drum Patterns</title>
+<meta name="description" content="U-MA Drum Patterns — patterns de caja de ritmos por estilo, con ratchets y exportación MIDI.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Silkscreen&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=7">
+</head>
+<body>
+<main>
+  <!-- Secuenciador: fijo arriba hasta el borde de la grilla -->
+  <div class="seq-sticky">
+    <section class="device">
+      <div class="device-top">
+        <img class="logo" src="logo.svg" alt="U-MA サウンド">
+        <div class="meta">
+          <a href="#langs" id="langLink" class="lang-link">LANG</a>
+          <div class="app-name">Drum Patterns</div>
+          <span id="metaStyle">—</span> · <span id="metaInfo">16 pasos</span>
+        </div>
+      </div>
+      <div class="pat-head">
+        <button id="play" class="play" title="Espacio" aria-label="Play">▶</button>
+        <input id="patName" class="name" value="Nuevo pattern" aria-label="Nombre del pattern">
+        <span id="dirty" class="dirty" hidden>●</span>
+      </div>
+      <div class="screen-wrap"><div id="grid" class="grid"></div></div>
+    </section>
+    <!-- grooves y breaks: panel flotante bajo la grilla -->
+    <div id="patList" class="pat-list" hidden></div>
+  </div>
+
+  <section class="panel">
+    <div id="nudgeBar" class="nudge" hidden>
+      <span id="nudgeLbl" data-i18n="nudgeEmpty">Tocá un paso con nota</span>
+      <span class="nudge-ctl">
+        <button data-d="-1" aria-label="Adelantar">−</button>
+        <input id="nudge" type="range" min="-50" max="50" value="0" disabled aria-label="Atrasar o adelantar en centésimas de paso">
+        <button data-d="1" aria-label="Atrasar">+</button>
+        <b id="nudgeVal">0</b><small>/100</small>
+        <button id="nudgeReset">0</button>
+      </span>
+    </div>
+    <div class="controls">
+      <label><span data-i18n="kit">Kit</span> <select id="kit"><option value="808">808</option><option value="clasica" data-i18n="classic">Clásica</option></select></label>
+      <label>BPM <input id="bpm" type="number" min="40" max="240" value="110"></label>
+      <label><span data-i18n="swing">Swing</span> <input id="swing" type="range" min="0" max="60" value="0"><span id="swingVal">0%</span></label>
+      <label><span data-i18n="lastStep">Último paso</span> <input id="lastStep" type="range" min="2" max="16" value="16"><span id="lastVal">16</span></label>
+      <label class="chk"><input id="ratchetOn" type="checkbox" checked> <span data-i18n="ratchets">Ratchets</span></label>
+    </div>
+    <div class="toolbar">
+      <div class="seg" id="lenSeg">
+        <span data-i18n="steps">Pasos</span>
+        <button data-len="8">8</button><button data-len="12">12</button><button data-len="16">16</button>
+      </div>
+      <div class="seg" id="toolSeg" title="Herramienta del toque. Clic derecho en un paso también rota el ratchet.">
+        <span data-i18n="tap">Toque</span>
+        <button data-tool="1" data-i18n="note">Nota</button><button data-tool="2">×2</button><button data-tool="3">×3</button><button data-tool="4">×4</button><button data-tool="sel" data-i18n="select">Selec.</button>
+      </div>
+      <button id="clear" class="btn" data-i18n="clear">Limpiar</button>
+      <button id="newPat" class="btn" data-i18n="new">Nuevo</button>
+    </div>
+    <p class="hint" data-i18n-html="hint">Toque: nota → <b>2º toque: acento</b> (el paso suena más fuerte, fila AC) → 3º toque: borra · ×2/×3/×4 o clic derecho: ratchet · <b>Selec.:</b> tocá una nota para atrasarla (+) o adelantarla (−) en centésimas de paso · Tocar el instrumento: mute</p>
+  </section>
+
+  <!-- Ritmos -->
+  <div class="section-label" data-i18n="rhythms">Ritmos</div>
+  <input id="search" type="search" placeholder="Buscar pattern…" data-i18n-ph="search">
+  <div id="styles" class="styles"></div>
+
+  <div class="section-label" data-i18n="save">Guardar</div>
+  <div class="row">
+    <label><span data-i18n="style">Estilo</span> <input id="saveStyle" list="styleList" value="Mis patterns"></label>
+    <datalist id="styleList"></datalist>
+    <button id="save" class="btn feature" data-i18n="save">Guardar</button>
+    <button id="del" class="btn" hidden data-i18n="del">Borrar</button>
+  </div>
+
+  <div class="section-label" data-i18n="export">Exportar</div>
+  <div class="row">
+    <label><span data-i18n="bars">Compases</span> <select id="bars"><option>1</option><option>2</option><option selected>4</option><option>8</option></select></label>
+    <button id="midi" class="btn" data-i18n="midiPattern">MIDI del pattern</button>
+    <button id="midiStyle" class="btn" data-i18n="midiStyle">MIDI del estilo</button>
+  </div>
+  <div class="row">
+    <button id="exportJson" class="btn" data-i18n="exportJson">Exportar mis patterns (JSON)</button>
+    <label class="btn file"><span data-i18n="importJson">Importar JSON</span><input id="importJson" type="file" accept=".json,application/json" hidden></label>
+  </div>
+
+  <footer>
+    <span><span class="copyleft" aria-label="Copyleft">©</span> Buenos Aires Front · U-MA</span>
+    <span class="sources"><span data-i18n="sources">Fuentes</span>: <i>260 Drum Machine Patterns</i>, René-Pierre Bardet (Hal Leonard) · <span data-i18n="internet">internet</span></span>
+  </footer>
+  <div id="langs" class="langs" hidden>
+    <span class="langs-label" data-i18n="language">Idioma</span>
+    <button data-lang="es" title="Español">ES</button><button data-lang="en" title="English">EN</button><button data-lang="ja" title="日本語">JA</button><button data-lang="zh" title="中文">ZH</button><button data-lang="de" title="Deutsch">DE</button><button data-lang="hi" title="हिन्दी">HI</button>
+  </div>
+</main>
+
+<script src="patterns.js?v=7"></script>
+<script src="extra-patterns.js?v=7"></script>
+<script src="i18n.js?v=7"></script>
+<script src="midi.js?v=7"></script>
+<script src="audio.js?v=7"></script>
+<script src="app.js?v=7"></script>
+</body>
+</html>
