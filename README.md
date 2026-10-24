@@ -59,7 +59,8 @@ y entrá a http://localhost:8770.
 
 ## Fuentes y licencia
 
-Ritmos de estilos clásicos de caja de ritmos, con nombres, selección y orden propios.
+Ritmos de estilos clásicos de caja de ritmos, con nombres, selección y orden propios,
+y variaciones U-MA en la mitad de ellos (hats abiertos, redobles, cajas fantasma, levantes, acentos, cierres de toms).
 Referencia de estudio: R.-P. Bardet, *260 Drum Machine Patterns* (Hal Leonard) · internet.
 Sin afiliación con el autor ni la editorial. Partitura de cumbia: Prof. Daniel Vargas (dominio público).
 
