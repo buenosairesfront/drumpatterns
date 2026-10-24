@@ -1,0 +1,14 @@
+{
+  "name": "U-MA Drum Patterns",
+  "short_name": "Drum Patterns",
+  "description": "Caja de ritmos: grooves por estilo, ratchets y exportación MIDI.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f4f1",
+  "theme_color": "#111111",
+  "icons": [
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

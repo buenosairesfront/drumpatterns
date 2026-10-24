@@ -21,6 +21,22 @@ Hecha por Buenos Aires Front. Funciona en el navegador, también en el celular, 
 
 ## Usarla
 
+Online: **https://buenosairesfront.github.io/drumpatterns/**
+
+### Links para la landing / Instagram
+
+| Link | Qué abre |
+|---|---|
+| `https://buenosairesfront.github.io/drumpatterns/` | la app |
+| `…/drumpatterns/?s=Cumbia` | la app con el estilo Cumbia abierto (sirve con cualquier estilo) |
+| `…/drumpatterns/?p=x_classics_8` | un groove puntual (el link de la barra cambia solo al elegir un groove: copialo de ahí) |
+| `…/drumpatterns/?lang=en` | la interfaz en otro idioma (`es`, `en`, `ja`, `zh`, `de`, `hi`) |
+
+Se pueden combinar: `?s=Techno&lang=en`. Al compartir el link aparece la vista previa (`og.png`),
+y desde el celular se puede "agregar a la pantalla de inicio" como app.
+
+### En local
+
 Abrí `index.html` en el navegador, o serví la carpeta:
 
 ```bash

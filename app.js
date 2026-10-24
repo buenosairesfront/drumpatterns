@@ -130,6 +130,8 @@ function loadPattern(p) {
   if (bpm) $('#bpm').value = bpm;
   $('#saveStyle').value = p.style;
   $('#del').hidden = !p.user;
+  // la dirección refleja el groove cargado, para compartir el link
+  try { if (p.id && !p.user) history.replaceState(null, '', `?p=${encodeURIComponent(p.id)}`); } catch {}
   renderGrid();
   renderLibrary();
 }
@@ -492,5 +494,11 @@ document.addEventListener('keydown', e => {
 });
 
 document.querySelector('#toolSeg button[data-tool="1"]').classList.add('on');
+// links directos desde la landing: ?p=<id>, ?s=<estilo>, ?lang=<es|en|ja|zh|de|hi>
+const params = new URLSearchParams(location.search);
+if (LANGS.includes(params.get('lang'))) { LANG = params.get('lang'); try { localStorage.setItem('dp.lang', LANG); } catch {} }
 applyI18n();
-loadPattern(BOOK_PATTERNS[0] ? { ...BOOK_PATTERNS[0], user: false } : { ...blankPattern(16), user: false });
+const linked = BOOK_PATTERNS.find(p => p.id === params.get('p'))
+  || BOOK_PATTERNS.find(p => p.style.toLowerCase() === (params.get('s') || '').toLowerCase());
+loadPattern(linked ? { ...linked, user: false } : BOOK_PATTERNS[0] ? { ...BOOK_PATTERNS[0], user: false } : { ...blankPattern(16), user: false });
+if (params.get('s') && linked) { state.openStyle = linked.style; renderLibrary(); }
