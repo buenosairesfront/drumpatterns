@@ -248,4 +248,35 @@
       AC: '................',
     },
   });
+
+  // Cumbia: 16 variaciones U-MA del groove "Cumbia Batería 100". Cada una cambia la base
+  // (bombo en 2 y 4 con corchea, aro en cada tiempo, güiro corchea + dos semicorcheas) sólo en lo que dice.
+  const CUMBIA_100 = { BD: '....x.x.....x.x.', RS: 'x...x...x...x...', CH: 'x.xxx.xxx.xxx.xx' };
+  const CUMBIA_100_VARS = [
+    ['Bombo en el 1', {}, { BD: 'x...x.x.x...x.x.' }],
+    ['Güiro corrido', {}, { CH: 'xxxxxxxxxxxxxxxx' }],
+    ['Charles abierto', {}, { CH: 'x.xxx.x.x.xxx.x.', OH: '......x.......x.' }],
+    ['Timbales', {}, { HT: '..x.......x.....', MT: '.......x.......x' }],
+    ['Cencerro', {}, { CB: 'x.x.x.x.x.x.x.x.' }],
+    ['Caja en 2 y 4', {}, { RS: 'x.......x.......', SD: '....x.......x...', AC: '....x.......x...' }],
+    ['Aro sincopado', {}, { RS: 'x...x..xx...x..x' }],
+    ['Caja fantasma', {}, { SD: '..x....x..x....x', AC: 'x...x...x...x...' }],
+    ['Bombo sincopado', {}, { BD: '....x.x..x..x.x.' }],
+    ['Bombo doble', {}, { BD: 'x...x.xx....x.xx' }],
+    ['Palmas', {}, { CP: '....x.......x...' }],
+    ['Ride', {}, { CH: '................', CY: 'x.xxx.xxx.xxx.xx' }],
+    ['Güiro con redobles', {}, { CH: 'x.xxx.x2x.xxx.x3' }],
+    ['Levante de toms', {}, { BD: '....x.x.....x...', RS: 'x...x...x.......', CH: 'x.xxx.xxx.......', HT: '..........x.x...', MT: '.............x..', LT: '..............xx' }],
+    ['Rebajada', { bpm: 80 }, { CH: 'x.x.x.x.x.x.x.x.', OH: '..............x.' }],
+    ['Cierre con platillo', {}, { BD: 'x...x.x.....x.x.', CY: 'x...............', AC: 'x...............' }],
+  ];
+  CUMBIA_100_VARS.forEach(([name, opt, r], i) => {
+    const rows = {};
+    for (const inst of INSTRUMENTS) rows[inst] = r[inst] || CUMBIA_100[inst] || '................';
+    BOOK_PATTERNS.push({
+      id: `x_cumbia_bateria_100_v${i + 1}`, style: 'Cumbia', name: `Cumbia 100 · ${name}`,
+      steps: 16, stepsPerBeat: 4, beatsPerBar: 4, bpm: opt.bpm || 100,
+      src: 'U-MA, variación de la partitura "Cumbia en Batería"', rows,
+    });
+  });
 })();
