@@ -1,5 +1,5 @@
 // Estilos extra U-MA: Jungle, Drum and Bass, Urbano, Reggaeton, Hip Hop, Techno y Experimental
-// (30 grooves cada uno), House (27), Classics (breakbeats) + Cumbia sacada de audio y de partitura. Cada groove trae su BPM.
+// (30 grooves cada uno), House (27), Classics (breakbeats), Cumbia sacada de audio y de partitura, Dubstep y Drum Machines. Cada groove trae su BPM.
 // Cada groove combina una "base" (bombo/caja + acentos) con una "capa" (hats, ride, percusión).
 // Filas: '.' vacío, 'x' nota, '2'..'4' ratchet. 16 pasos de semicorchea.
 (() => {
@@ -279,4 +279,70 @@
       src: 'U-MA, variación de la partitura "Cumbia en Batería"', rows,
     });
   });
+
+  // Grooves propios U-MA: Dubstep (half-time a 140, caja en el 3), Drum Machines (un groove típico por máquina)
+  // y extras para Techno (dub techno), Urbano (trap) y Hip Hop (boom bap). Escritos a mano, no copiados de packs.
+  const OWN = [
+    // [estilo, id, nombre, bpm, filas]
+    ['Dubstep', 'dub_1', 'Dubstep 1', 140, { BD: 'x.........x.....', SD: '........x.......', CH: 'x.x.x.x.x.x.x.x.', AC: '........x.......' }],
+    ['Dubstep', 'dub_2', 'Dubstep 2', 140, { BD: 'x.x.......x..x..', SD: '........x.......', CH: 'x...x...x...x...', OH: '......x.......x.', AC: '........x.......' }],
+    ['Dubstep', 'dub_3', 'Dubstep 3', 140, { BD: 'x..........x....', SD: '........x.......', CH: 'x.x.x.x2x.x.x.x3', AC: '........x.......' }],
+    ['Dubstep', 'dub_4', 'Dubstep 4', 140, { BD: 'x.........x.....', SD: '........x.......', RS: '...x......x..x..', CH: 'x...x...x...x...', AC: '........x.......' }],
+    ['Dubstep', 'dub_5', 'Dubstep 5', 140, { BD: 'x.....x.........', SD: '........x.......', CH: 'x.x.x.x.........', HT: '.........x......', MT: '..........x.....', LT: '...........x.x..', AC: '........x.......' }],
+    ['Dubstep', 'dub_6', 'Dubstep 6', 140, { BD: 'x.........x..x..', SD: '........x.....x.', CP: '........x.......', CH: '..x...x...x...x.', AC: '........x.......' }],
+    ['Dubstep', 'dub_7', 'Dubstep 7', 140, { BD: 'x.........x.....', SD: '...x....x..x...x', CH: 'xxxxxxxxxxxxxxxx', AC: '........x.......' }],
+    ['Dubstep', 'dub_8', 'Dubstep 8', 140, { BD: 'x..x......x.....', SD: '........x.......', CY: 'x.x.x.x.x.x.x.x.', AC: '........x.......' }],
+    ['Dubstep', 'dub_9', 'Dubstep 9', 140, { BD: 'x.x...x...x.x...', SD: '........x.......', CH: 'x...x...x...x...', AC: 'x.......x.......' }],
+    ['Dubstep', 'dub_10', 'Dubstep 10', 140, { BD: 'x.........x.....', SD: '........x.......', CB: '..x...x...x...x.', CH: 'x...x...x...x...', AC: '........x.......' }],
+    ['Dubstep', 'dub_11', 'Dubstep 11', 140, { BD: 'x.........x.....', SD: '........x...x234', CH: 'x.x.x.x.x.x.....', AC: '........x.......' }],
+    ['Dubstep', 'dub_12', 'Dubstep 12', 140, { BD: 'x...............', SD: '........x.......', OH: '....x.......x...', AC: '........x.......' }],
+    ['Dubstep', 'dub_13', 'Dubstep 13', 140, { BD: 'x......x..x.....', SD: '........x.......', CH: '..x...x...x...x.', AC: '........x.......' }],
+    ['Dubstep', 'dub_14', 'Dubstep 14', 140, { BD: 'x.........x.....', SD: '........x.......', CH: '..x.x.x.x.x.x.x.', CY: 'x...............', AC: 'x.......x.......' }],
+    ['Dubstep', 'dub_15', 'Dubstep 15', 140, { BD: 'x.........x..x..', SD: '........x......x', CH: 'x.xx.xx.x.xx.xx.', AC: '........x.......' }],
+    ['Dubstep', 'dub_16', 'Dubstep 16', 140, { BD: 'x..x..x...x.....', SD: '........x.......', CH: 'x..x..x..x..x...', AC: '........x.......' }],
+
+    ['Drum Machines', 'dm_808_electro', '808 · Electro', 110, { BD: 'x.....x..x......', SD: '....x.......x...', CP: '....x.......x...', CH: 'x.x.x.x.x.x.x.x.', CB: '..........x..x..', AC: '....x.......x...' }],
+    ['Drum Machines', 'dm_808_miami', '808 · Miami', 128, { BD: 'x..x..x...x..x..', SD: '....x.......x...', CH: 'xxxxxxxxxxxxxxxx', AC: '....x.......x...' }],
+    ['Drum Machines', 'dm_808_boom', '808 · Boom', 90, { BD: 'x......x.x......', SD: '....x.......x...', RS: '.......x........', CH: 'x.x.x.x.x.x.x.x.', AC: '....x.......x...' }],
+    ['Drum Machines', 'dm_808_bell', '808 · Cencerro', 118, { BD: 'x...x...x...x...', CP: '....x.......x...', CH: '..x...x...x...x.', CB: 'x..x..x...x..x..', AC: 'x.......x.......' }],
+    ['Drum Machines', 'dm_909_house', '909 · House', 124, { BD: 'x...x...x...x...', CP: '....x.......x...', CH: 'x...x...x...x...', OH: '..x...x...x...x.', AC: '....x.......x...' }],
+    ['Drum Machines', 'dm_909_techno', '909 · Techno', 132, { BD: 'x...x...x...x...', RS: '...x..x....x..x.', CH: 'xxxxxxxxxxxxxxxx', OH: '..x...x...x...x.', AC: 'x...x...x...x...' }],
+    ['Drum Machines', 'dm_909_garage', '909 · Garage', 130, { BD: 'x......x..x.....', SD: '....x.......x...', CH: 'x.xx.xx.x.xx.xx.', OH: '..............x.', AC: '....x.......x...' }],
+    ['Drum Machines', 'dm_909_roll', '909 · Rolling', 135, { BD: 'x...x...x...x...', SD: '....x.......x.xx', CH: 'x.x.x.x.x.x.x.x.', CY: 'x...............', AC: 'x...x.......x...' }],
+    ['Drum Machines', 'dm_606_acid', '606 · Acid', 126, { BD: 'x...x...x...x...', SD: '....x.......x...', CH: 'xxxxxxxxxxxxxxxx', OH: '..............x.', AC: 'x...x...x...x...' }],
+    ['Drum Machines', 'dm_606_pop', '606 · Electro pop', 115, { BD: 'x......x.x......', SD: '....x.......x...', CH: 'x.x.x.x.x.x.x.x.', HT: '...............x', AC: '....x.......x...' }],
+    ['Drum Machines', 'dm_707_pop', '707 · Pop', 118, { BD: 'x.......x.x.....', SD: '....x.......x...', CP: '....x.......x...', CH: 'x.x.x.x.x.x.x.x.', AC: '....x.......x...' }],
+    ['Drum Machines', 'dm_707_free', '707 · Freestyle', 120, { BD: 'x..x..x...x.x...', SD: '....x.......x...', CH: 'x.xxx.xxx.xxx.xx', CB: '..x.......x.....', AC: '....x.......x...' }],
+    ['Drum Machines', 'dm_707_nrg', '707 · Hi-NRG', 128, { BD: 'x...x...x...x...', SD: '....x.......x...', CP: '....x.......x...', OH: '..x...x...x...x.', AC: '....x.......x...' }],
+    ['Drum Machines', 'dm_78_rock', 'CR-78 · Rock', 100, { BD: 'x.......x.x.....', SD: '....x.......x...', CH: 'x.x.x.x.x.x.x.x.', CB: 'x...x...x...x...', AC: 'x.......x.......' }],
+    ['Drum Machines', 'dm_78_bossa', 'CR-78 · Bossa', 120, { BD: 'x..xx..xx..xx..x', RS: 'x..x..x...x..x..', CH: 'xxxxxxxxxxxxxxxx', AC: 'x.......x.......' }],
+    ['Drum Machines', 'dm_dmx_hiphop', 'DMX · Hip hop', 98, { BD: 'x..x......x..x..', SD: '....x.......x...', CH: 'x.x.x.x.x.x.x.x.', OH: '..........x.....', AC: '....x.......x...' }],
+    ['Drum Machines', 'dm_dmx_funk', 'DMX · Electro funk', 108, { BD: 'x.....x...x..x..', SD: '....x.......x...', CP: '....x.......x...', CH: 'x.xxx.xxx.xxx.xx', AC: '....x.......x...' }],
+    ['Drum Machines', 'dm_linn_funk', 'LinnDrum · Funk', 104, { BD: 'x.x....x..x.....', SD: '....x..x.x..x...', CH: 'xxxxxxxxxxxxxxxx', AC: '....x.......x...' }],
+    ['Drum Machines', 'dm_linn_synth', 'LinnDrum · Synthpop', 120, { BD: 'x.......x.......', SD: '....x.......x...', CH: 'x.x.x.x.x.x.x...', HT: '.............x..', MT: '..............x.', LT: '...............x', AC: '....x.......x...' }],
+    ['Drum Machines', 'dm_505_funk', '505 · Synth funk', 112, { BD: 'x..x..x..x......', SD: '....x.......x...', CH: 'x.x.x.x.x.x.x.x.', CB: 'x..x..x.........', AC: '....x.......x...' }],
+    ['Drum Machines', 'dm_sds_toms', 'SDS · Toms', 120, { BD: 'x...x...x...x...', SD: '....x.......x...', HT: '..x.......x.....', MT: '...x.......x....', LT: '......x.......x.', AC: '....x.......x...' }],
+
+    ['Techno', 'techno_dub_1', 'Dub Techno 1', 122, { BD: 'x...x...x...x...', RS: '...x.....x....x.', CH: '..x...x...x...x.', AC: 'x...x...x...x...' }],
+    ['Techno', 'techno_dub_2', 'Dub Techno 2', 124, { BD: 'x...x...x...x...', CP: '.......x....x...', CH: '..xx..x...xx..x.', AC: 'x...x...x...x...' }],
+    ['Techno', 'techno_dub_3', 'Dub Techno 3', 120, { BD: 'x...x...x...x...', RS: '.....x.....x..x.', OH: '..x...x...x...x.', AC: 'x...x...x...x...' }],
+    ['Techno', 'techno_dub_4', 'Dub Techno 4', 126, { BD: 'x...x...x...x..x', CH: 'x.xxx.xxx.xxx.xx', CB: '......x.......x.', AC: 'x...x...x...x...' }],
+
+    ['Urbano', 'urbano_trap_1', 'Trap 1', 140, { BD: 'x......x..x.....', SD: '........x.......', CP: '........x.......', CH: 'x.x.x.x.x.x.x2x3', AC: '........x.......' }],
+    ['Urbano', 'urbano_trap_2', 'Trap 2', 140, { BD: 'x.x.......xx..x.', SD: '........x.......', CH: 'x.x2x.x.x3x.x.x.', OH: '..............x.', AC: '........x.......' }],
+    ['Urbano', 'urbano_trap_3', 'Trap 3', 140, { BD: 'x.....x.......x.', CP: '........x.......', RS: '...x......x.....', CH: 'x.x.x.x.x.x.x.x.', AC: '........x.......' }],
+    ['Urbano', 'urbano_trap_4', 'Trap 4', 140, { BD: 'x..x......x..x..', SD: '........x......x', CH: 'x.x.4.x.x.x.3.x.', AC: '........x.......' }],
+
+    ['Hip Hop', 'hiphop_boombap_1', 'Boom Bap 1', 88, { BD: 'x......x.x......', SD: '....x.......x...', CH: 'x.x.x.x.x.x.x.x.', AC: '....x.......x...' }],
+    ['Hip Hop', 'hiphop_boombap_2', 'Boom Bap 2', 90, { BD: 'x.x.....xx......', SD: '....x.......x..x', CH: 'x.x.x.x.x.x.x.x.', OH: '..............x.', AC: '....x.......x...' }],
+    ['Hip Hop', 'hiphop_boombap_3', 'Boom Bap 3', 84, { BD: 'x.....xx..x.....', SD: '....x.......x...', CH: 'xxxxxxxxxxxxxxxx', AC: 'x...x...x...x...' }],
+    ['Hip Hop', 'hiphop_boombap_4', 'Boom Bap 4', 94, { BD: 'x..x...x.x......', SD: '....x..x....x...', CH: 'x.x.x.x.x.x.x.x.', AC: '....x.......x...' }],
+    ['Hip Hop', 'hiphop_boombap_5', 'Boom Bap 5', 92, { BD: 'x.......x.x..x..', SD: '....x.......x...', RS: '......x.......x.', CH: 'x...x...x...x...', AC: '....x.......x...' }],
+    ['Hip Hop', 'hiphop_boombap_6', 'Boom Bap 6', 86, { BD: 'x..x..x...x.....', SD: '....x.......x...', CH: 'x.xxx.x.x.xxx.x.', AC: '....x.......x...' }],
+  ];
+  for (const [style, id, name, bpm, r] of OWN) {
+    const rows = {};
+    for (const inst of INSTRUMENTS) rows[inst] = r[inst] || '................';
+    BOOK_PATTERNS.push({ id: `x_${id}`, style, name, steps: 16, stepsPerBeat: 4, beatsPerBar: 4, bpm, src: 'U-MA', rows });
+  }
 })();

@@ -16,7 +16,7 @@ const state = {
   pattern: null,      // pattern en edición (copia)
   loadedId: null,     // id del pattern de la biblioteca que se cargó
   snapshot: '',       // para detectar cambios
-  tool: 1,           // 1–4 = nota / ratchet, 'sel' = seleccionar paso
+  tool: 1,           // 1–4 = nota / ratchet, 'acc' = acentuar, 'sel' = seleccionar paso
   sel: null,         // paso seleccionado { inst, s }
   muted: new Set(),
   playing: false,
@@ -217,17 +217,20 @@ function onGridClick(e, cycle) {
     setStep(inst, s, next === 0 ? '.' : next === 1 ? 'x' : String(next));
     return;
   }
-  // toque: nota → acento → borrar
-  const acc = isOn(state.pattern.rows.AC, s);
+  if (state.tool === 'acc') { // acentuar: sólo sobre notas
+    if (!cur) return;
+    toggleAccent(s);
+    if (!state.playing) audition(inst, isOn(state.pattern.rows.AC, s) ? 1 : 0.8);
+    return;
+  }
+  // toque: escribe · otro toque: borra
   if (!cur) {
     setStep(inst, s, state.tool === 1 ? 'x' : String(state.tool));
-    if (!state.playing) audition(inst, acc ? 1 : 0.8);
-  } else if (!acc) {
-    toggleAccent(s);
-    if (!state.playing) audition(inst, 1);
+    if (!state.playing) audition(inst, isOn(state.pattern.rows.AC, s) ? 1 : 0.8);
   } else {
     setStep(inst, s, '.');
-    toggleAccent(s);
+    // si el paso quedó vacío, el acento no tiene a quién acentuar
+    if (isOn(state.pattern.rows.AC, s) && !INSTS.some(i => i !== 'AC' && isOn(state.pattern.rows[i], s))) toggleAccent(s);
   }
 }
 
@@ -445,7 +448,8 @@ $('#grid').addEventListener('contextmenu', e => { if (e.target.closest('.cell'))
 $('#lenSeg').addEventListener('click', e => e.target.dataset.len && setLength(+e.target.dataset.len));
 $('#toolSeg').addEventListener('click', e => {
   if (!e.target.dataset.tool) return;
-  state.tool = e.target.dataset.tool === 'sel' ? 'sel' : +e.target.dataset.tool;
+  const tl = e.target.dataset.tool;
+  state.tool = tl === 'sel' || tl === 'acc' ? tl : +tl;
   document.querySelectorAll('#toolSeg button').forEach(b => b.classList.toggle('on', b === e.target));
   setSelection(null);
 });
